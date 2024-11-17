@@ -30,10 +30,42 @@ root: intro
 parts:
   - caption: Optimization
     chapters:
-    - file: contents/optimization/surrogate_optimization/sbo
-    - file: contents/optimization/optimization_problems/index
+
+    - file: contents/optimization/first_order_methods/intro
+      sections:
+      - file: contents/optimization/first_order_methods/gradient_descent
+      - file: contents/optimization/first_order_methods/momentum
+    
+    - file: contents/optimization/linear_programming/intro
+      sections:
+      - file: contents/optimization/linear_programming/forms
+      - file: contents/optimization/linear_programming/piecewise_linear
+
+    - file: contents/optimization/integer_programming/intro
+      sections:
+      - file: contents/optimization/integer_programming/branch_and_bound
+
+    - file: contents/optimization/graphs_and_networks/intro
+      sections:
+      - file: contents/optimization/graphs_and_networks/dijkstra
+
+    - file: contents/optimization/metaheuristics/intro
+      sections:
+      - file: contents/optimization/metaheuristics/genetic_algorithm
+      - file: contents/optimization/metaheuristics/particle_swarm_optimization
+      - file: contents/optimization/metaheuristics/constraint_handling
+      - file: contents/optimization/metaheuristics/differential_evolution
+      - file: contents/optimization/metaheuristics/initialization
+    
+    - file: contents/optimization/surrogate_optimization/intro
+      sections:
+      - file: contents/optimization/surrogate_optimization/sbo
+    
+    - file: contents/optimization/optimization_problems/intro
       sections:
       - file: contents/optimization/optimization_problems/newsvendor_problem
+
+  
   - caption: jb-book
     chapters:
     - file: contents/jb-book/markdown

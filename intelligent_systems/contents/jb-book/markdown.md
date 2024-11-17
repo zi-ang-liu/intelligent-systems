@@ -36,7 +36,7 @@ Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
 
 ## Citations
 
-You can also cite references that are stored in a `bibtex` file. For example,
+<!-- You can also cite references that are stored in a `bibtex` file. For example,
 the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
 this: {cite}`holdgraf_evidence_2014`.
 
@@ -47,7 +47,8 @@ For example, if the references for your book are stored in `references.bib`,
 then the bibliography is inserted with:
 
 ```{bibliography}
-```
+:filter: docname in docnames
+``` -->
 
 ## Learn more
 
