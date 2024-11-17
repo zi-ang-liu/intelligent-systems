@@ -25,6 +25,31 @@
 #       sections:
 #       - file: path/to/part2/chapter2/section1
 
+  # - caption: Supervised Learning
+  #   chapters:
+  #   - file: contents/supervised_learning/perceptron
+
+  # - caption: Reinforcement Learning
+  #   chapters:
+  #   - file: contents/rl/mab
+  #   - file: contents/rl/mdp
+  #   - file: contents/rl/dp
+  #   - file: contents/rl/td
+  #   - file: contents/rl/dqn
+
+  # - caption: Explainable AI
+  #   chapters:
+  #   - file: contents/xai/lime
+
+  # - caption: Federated Learning
+  #   chapters:
+  #   - file: contents/fl/intro
+  #   - file: contents/fl/fedavg
+
+  # - caption: Large Language Models
+  #   chapters:
+  #   - file: contents/llm/langchain
+
 format: jb-book
 root: intro
 parts:
@@ -65,7 +90,29 @@ parts:
       sections:
       - file: contents/optimization/optimization_problems/newsvendor_problem
 
-  
+  - caption: Machine Learning
+    chapters:
+
+    - file: contents/machine_learning/supervised_learning/intro
+      sections:
+      - file: contents/machine_learning/supervised_learning/perceptron
+
+    - file: contents/machine_learning/reinforcement_learning/intro
+      sections:
+      - file: contents/machine_learning/reinforcement_learning/mab
+      - file: contents/machine_learning/reinforcement_learning/mdp
+      - file: contents/machine_learning/reinforcement_learning/dp
+      - file: contents/machine_learning/reinforcement_learning/td
+      - file: contents/machine_learning/reinforcement_learning/dqn
+
+    - file: contents/machine_learning/explainable_ai/intro
+      sections:
+      - file: contents/machine_learning/explainable_ai/lime
+
+    - file: contents/machine_learning/federated_learning/intro
+      sections:
+      - file: contents/machine_learning/federated_learning/fedavg
+
   - caption: jb-book
     chapters:
     - file: contents/jb-book/markdown
