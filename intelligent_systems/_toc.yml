@@ -31,6 +31,9 @@ parts:
   - caption: Optimization
     chapters:
     - file: contents/optimization/surrogate_optimization/sbo
+    - file: contents/optimization/optimization_problems/index
+      sections:
+      - file: contents/optimization/optimization_problems/newsvendor_problem
   - caption: jb-book
     chapters:
     - file: contents/jb-book/markdown
