@@ -28,6 +28,9 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Optimization
+    chapters:
+    - file: contents/optimization/surrogate_optimization/sbo
   - caption: jb-book
     chapters:
     - file: contents/jb-book/markdown
