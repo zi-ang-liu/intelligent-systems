@@ -26,7 +26,7 @@
 #       - file: path/to/part2/chapter2/section1
 
 format: jb-book
-root: index
+root: intro
 parts:
   - caption: jb-book
     chapters:
