@@ -41,6 +41,15 @@ parts:
       sections:
       - file: contents/optimization/optimization_problems/newsvendor_problem
 
+
+  - caption: Operations Research
+    chapters:
+
+    - file: contents/or/pert/intro
+      sections:
+      - file: contents/or/pert/cpm
+      - file: contents/or/pert/pert   
+
   - caption: Machine Learning
     chapters:
 
