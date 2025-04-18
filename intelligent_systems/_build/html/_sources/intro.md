@@ -1,4 +1,0 @@
-# Intelligent Systems
-
-```{tableofcontents}
-```
