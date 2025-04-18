@@ -4,6 +4,12 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Numerical Methods
+    chapters:
+
+    - file: contents/numerical_methods/bisection
+    - file: contents/numerical_methods/newton
+
   - caption: Optimization
     chapters:
 
