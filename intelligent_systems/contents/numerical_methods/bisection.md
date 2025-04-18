@@ -34,3 +34,52 @@ $I^{(1)} = [a^{(1)}, b^{(1)}]$を新しい区間として、$f(a^{(1)})f(b^{(1)}
 3. Return $a, b, x$
 
 ```
+
+## 実装
+
+```python
+def bisection(f, a, b, tol=1e-6):
+    """
+    Bisection method: root finding algorithm
+
+    Parameters
+    ----------
+    f : function
+        The function to find the root of
+    a : float
+        Lower bound of the interval
+    b : float
+        Upper bound of the interval
+    tol : float
+        Tolerance
+
+    Returns
+    -------
+    a : float
+        Lower bound of the interval
+    b : float
+        Upper bound of the interval
+    x : float
+        The estimated root
+
+    """
+
+    if f(a) * f(b) > 0:
+        raise ValueError("f(a) and f(b) must have opposite signs")
+
+    if f(a) == 0:
+        return a, a, a
+    if f(b) == 0:
+        return b, b, b
+
+    while b - a > tol:
+        # Your code here
+    return a, b, (a + b) / 2
+
+
+def f(x):
+    return x**2 - 4
+
+
+a, b, x = bisection(f, 0, 3)
+print(f"Root={x}
