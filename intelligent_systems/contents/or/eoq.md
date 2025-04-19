@@ -2,14 +2,37 @@
 
 The *Economic Order Quantity* (EOQ) model is one of the most foundamental inventory models. 
 
-## Problem Definition
+## Problem Definition and Optimization
 
-## Formulation
+The EOQ model assumes that the demand rate $d$ over a year is deterministic and constant. The lead time is 0, that is, orders are received immediately. Every time an order is placed, a fixed cost $K$ is incurred. The holding cost per unit per year is $h$. 
 
-- $K$: fixed cost per order
-- $h$: holding cost per unit per year
-- $d$: demand rate (units per year)
-- $Q$: order quantity
+The goal of the EOQ model is to find the optimal order quantity $Q^*$ that minimizes the total cost, denoted as $g(Q)$:
+
+$$
+g(Q) = \frac{Kd}{Q} + \frac{hQ}{2}
+$$
+
+The first term represents the ordering cost, where $d/Q$ is the number of orders placed per year. The second term represents the holding cost, where $Q/2$ is the average inventory held.
+
+The first derivative of the cost function is given by:
+
+$$
+g'(Q) = -\frac{Kd}{Q^2} + \frac{h}{2}
+$$
+
+The second derivative is given by:
+
+$$
+g''(Q) = \frac{2Kd}{Q^3} > 0
+$$
+
+Clearly, the second derivative is positive, indicating that the function is convex. When $g'(Q) = 0$, we can find the optimal order quantity $Q^*$:
+
+$$
+Q^* = \sqrt{\frac{2Kd}{h}}
+$$
+
+The following theorem summarizes the results of the EOQ model.
 
 ````{prf:theorem} Economic Order Quantity
 :label: eoq
