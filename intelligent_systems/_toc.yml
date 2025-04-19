@@ -53,8 +53,9 @@ parts:
 
     - file: contents/or/pert/intro
       sections:
-      - file: contents/or/pert/cpm
-      - file: contents/or/pert/pert   
+      # - file: contents/or/pert/cpm
+      - file: contents/or/pert/pert 
+      - file: contents/or/eoq  
 
   - caption: Machine Learning
     chapters:
