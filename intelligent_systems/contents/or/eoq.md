@@ -16,7 +16,7 @@ The *Economic Order Quantity* (EOQ) model is one of the most foundamental invent
 The optimal order quantity $Q^*$ that minimizes the total cost in the EOQ model is given by:
 
 $$
-Q^* = \sqrt{\frac{2KD}{h}}$$
+Q^* = \sqrt{\frac{2KD}{h}}
 $$
 
 The total cost $g(Q)$ is given by:
