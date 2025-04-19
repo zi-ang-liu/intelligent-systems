@@ -1,47 +1,24 @@
-def newton(f, df, x0, tol=1e-6):
+def eoq(K, h, demand):
     """
-    Newton's method: root finding algorithm
+    Calculate the Economic Order Quantity (EOQ) and the total cost.
 
-    Parameters
-    ----------
-    f : function
-        The function to find the root of
-    df : function
-        The derivative of the function
-    x0 : float
-        Initial guess
-    tol : float
-        Tolerance
+    Parameters:
+    K (float): Fixed cost per order
+    h (float): Holding cost per unit per year
+    demand (float): Demand rate (units per year)
 
-    Returns
-    -------
-    x : float
-        The estimated root
-
+    Returns:
+    tuple: Optimal order quantity (Q*) and total cost (g(Q*))
     """
-
-    x = x0
-    while True:
-        fx = f(x)
-        dfx = df(x)
-
-        if abs(fx) < tol:
-            break
-
-        if dfx == 0:
-            raise ValueError("Derivative is zero. No solution found.")
-
-        x = x - fx / dfx
-    return x
+    Q_optimal = (2 * K * demand / h) ** 0.5
+    total_cost = (2 * K * demand * h) ** 0.5
+    return Q_optimal, total_cost
 
 
-def df(x):
-    return 2 * x
-
-
-def f(x):
-    return x**2 - 4
-
-
-x = newton(f, df, 3)
-print(f"Root={x}")
+# Example usage
+K = 8  # Fixed cost per order
+h = 0.225  # Holding cost per unit per year
+demand = 1300  # Demand rate (units per year)
+optimal_order_quantity, total_cost = eoq(K, h, demand)
+print(f"Optimal Order Quantity (Q*): {optimal_order_quantity}")
+print(f"Total Cost (g(Q*)): {total_cost}")
