@@ -23,15 +23,15 @@ $I^{(1)} = [a^{(1)}, b^{(1)}]$を新しい区間として、$f(a^{(1)})f(b^{(1)}
 :label: bisection-algorithm
 
 **Inputs:** function $f$, interval $[a, b]$, tolerance $\epsilon$   
-**Output:** interval $[a, b]$, estimate of the root $x$
+**Output:** estimate of the root $x$
 
 1. Ensure $f(a)f(b) < 0$
 2. While $b - a > \epsilon$:
     1. $x \leftarrow (a + b) / 2$
-    2. If $f(x) = 0$, return $m$
+    2. If $f(x) = 0$, return $x$
     3. Else if $f(a)f(x) < 0$, $b \leftarrow x$
     4. Else, $a \leftarrow x$
-3. Return $a, b, x$
+3. Return $x$
 
 ```
 
@@ -54,11 +54,7 @@ def bisection(f, a, b, tol=1e-6):
         Tolerance
 
     Returns
-    -------
-    a : float
-        Lower bound of the interval
-    b : float
-        Upper bound of the interval
+    --------
     x : float
         The estimated root
 
@@ -68,18 +64,24 @@ def bisection(f, a, b, tol=1e-6):
         raise ValueError("f(a) and f(b) must have opposite signs")
 
     if f(a) == 0:
-        return a, a, a
+        return a
     if f(b) == 0:
-        return b, b, b
+        return b
 
     while b - a > tol:
-        # Your code here
-    return a, b, (a + b) / 2
+        x = (a + b) / 2
+        if f(x) == 0:
+            return x
+        elif f(a) * f(x) < 0:
+            b = x
+        else:
+            a = x
+    return x
 
 
 def f(x):
     return x**2 - 4
 
-
-a, b, x = bisection(f, 0, 3)
-print(f"Root={x}
+x = bisection(f, 0, 5)
+print(f"The estimated root is: {x}")
+```

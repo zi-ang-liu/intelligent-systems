@@ -57,8 +57,17 @@ def newton(f, df, x0, tol=1e-6):
     """
 
     x = x0
-    while abs(f(x)) > tol:
-        # Your code here
+    while True:
+        fx = f(x)
+        dfx = df(x)
+
+        if abs(fx) < tol:
+            break
+
+        if dfx == 0:
+            raise ValueError("Derivative is zero. No solution found.")
+
+        x = x - fx / dfx
     return x
 
 
@@ -71,7 +80,5 @@ def f(x):
 
 
 x = newton(f, df, 3)
-
 print(f"Root={x}")
-
 ```
