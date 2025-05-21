@@ -9,6 +9,8 @@ parts:
     chapters:
 
     - file: contents/algorithms/mergesort
+    - file: contents/algorithms/fibonacci
+    - file: contents/algorithms/mondrian
 
   - caption: Numerical Methods
     chapters:

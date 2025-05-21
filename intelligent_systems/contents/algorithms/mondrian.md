@@ -1,3 +1,25 @@
+# Mondrian
+
+Recursive algorithm to generate the style of Piet Mondrian (1872-1944), a Dutch painter known for his abstract geometric style.
+
+## Algorithm
+
+```{prf:algorithm} Mondrian
+:label: mondrian-algorithm
+
+**Inputs:** Rectangle
+
+1. If the rectangle is too small:
+    1. Return the rectangle
+2. Else:
+    1. Divide the rectangle into two smaller rectangles
+    2. Recursively apply the Mondrian algorithm to each smaller rectangle
+3. Return the combined rectangles
+```
+
+## Implementation
+
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -69,3 +91,5 @@ if __name__ == "__main__":
     plt.axis("off")
     mondrian(0, 0, 1, 1)
     plt.show()
+```
+
