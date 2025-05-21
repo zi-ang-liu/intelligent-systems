@@ -71,5 +71,6 @@ def merge(left, right):
     merged = []
     i = j = 0
 
-    while
+    while i < len(left) and j < len(right):
+        if left[]
     
