@@ -4,11 +4,11 @@ Merge sort is an efficient sorting algorithm. It was invented by John von Neuman
 
 ## Algorithm
 
-<!-- ```{prf:algorithm} Merge 
+```{prf:algorithm} Merge 
 :label: merge-algorithm
 
 **Inputs:** sorted array $A$, sorted array $B$
-**Output:** sorted array $C$ -->
+**Output:** sorted array $C$
 
 1. $i \leftarrow 1$
 2. $j \leftarrow 1$
@@ -72,5 +72,51 @@ def merge(left, right):
     i = j = 0
 
     while i < len(left) and j < len(right):
-        if left[]
+        if left[i] < right[j]:
+            merged.append(left[i])
+            i += 1
+        else:
+            merged.append(right[j])
+            j += 1
+
+    merged.extend(left[i:])
+    merged.extend(right[j:])
+
+    return merged
+
+
+def merge_sort(arr):
+    """
+    Merge sort algorithm.
+
+    Parameters
+    ----------
+    arr : list
+        The array to be sorted
+
+    Returns
+    -------
+    list
+        The sorted array
+    """
+
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+
+if __name__ == "__main__":
+    # Example usage
+    arr = [38, 27, 43, 3, 9, 82, 10]
+    sorted_arr = merge_sort(arr)
+    print("Sorted array:", sorted_arr)
+    # Output: Sorted array: [3, 9, 10, 27, 38, 43, 82]
+```
+
+
+
     

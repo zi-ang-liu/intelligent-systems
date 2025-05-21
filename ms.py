@@ -31,4 +31,32 @@ def merge(left, right):
     return merged
 
 
-def merge_sort()
+def merge_sort(arr):
+    """
+    Merge sort algorithm.
+
+    Parameters
+    ----------
+    arr : list
+        The array to be sorted
+
+    Returns
+    -------
+    list
+        The sorted array
+    """
+
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+
+if __name__ == "__main__":
+    # Example usage
+    arr = [38, 27, 43, 3, 9, 82, 10]
+    sorted_arr = merge_sort(arr)
+    print("Sorted array:", sorted_arr)
