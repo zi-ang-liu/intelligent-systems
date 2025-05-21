@@ -4,6 +4,12 @@
 format: jb-book
 root: intro
 parts:
+
+  - caption: Algorithms
+    chapters:
+
+    - file: contents/algorithms/mergesort
+
   - caption: Numerical Methods
     chapters:
 
