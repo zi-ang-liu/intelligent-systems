@@ -177,10 +177,22 @@ class Sphere:
 
 if __name__ == "__main__":
     problem = Sphere()
-    de = DE(problem, n_dim=10, n_gen=100, n_pop=10, ub=100, lb=-100, F=0.8, CR=0.5)
+    de = DE(problem, n_dim=10, n_gen=1000, n_pop=10, ub=100, lb=-100, F=0.8, CR=0.5)
     best_solution = de.optimize()
     print("Best solution found: ", best_solution)
 ```
 
+To implement this algorithm to solve a simulation optimization problem, you can create a simulation class that simulates the system and returns the objective function value. 
 
+```python
+class Sim:
+    def __init__(self):
+        # define the simulation parameters
+        pass
+
+    def simulate(self, x):
+        # run the simulation with the given parameters x
+        # return the objective function value
+        pass
+```
 
