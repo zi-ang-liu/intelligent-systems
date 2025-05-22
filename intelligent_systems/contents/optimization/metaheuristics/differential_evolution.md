@@ -15,7 +15,7 @@ Consider a function $f: \mathbb{R}^n \to \mathbb{R}$ that we want to minimize ov
 Let $\mathbf{x}_{i,t} \in \mathcal{X}$ be the $i$-th solution in the population at generation $t$. The initial population can be generated randomly by the following equation:
 
 $$
-\mathbf{x}_{i,0} = \mathbf{x}_{\text{min}} + \mathbf{r}_{i} \cdot (\mathbf{x}_{\text{max}} - \mathbf{x}_{\text{min}}), \quad i = 1, 2, \ldots, N
+\mathbf{x}_{i,1} = \mathbf{x}_{\text{min}} + \mathbf{r}_{i} \cdot (\mathbf{x}_{\text{max}} - \mathbf{x}_{\text{min}}), \quad i = 1, 2, \ldots, N
 $$
 
 where $N$ is the population size and $\mathbf{r}_{i}$ is a vector of random numbers uniformly distributed in the range $[0, 1]$.
@@ -61,7 +61,15 @@ where $f(\cdot)$ is the objective function to be minimized.
 ```{prf:algorithm} Differential Evolution
 :label: DE
 
-**Inputs:** 
+1. Initialize the population $\mathbf{x}_{i,1}$ for $i = 1, 2, \ldots, N$.
+2. Evaluate $f(\mathbf{x}_{i,1})$ for $i = 1, 2, \ldots, N$.
+3. For $t = 1$ to $T$ (number of generations):
+   1. For each solution $i = 1, 2, \ldots, N$:
+      1. $\mathbf{v}_{i,t} \gets \mathbf{x}_{r_1,t} + F \cdot (\mathbf{x}_{r_2,t} - \mathbf{x}_{r_3,t})$.
+      2. Perform crossover to create $\mathbf{u}_{i,t}$.
+      3. If $f(\mathbf{u}_{i,t}) < f(\mathbf{x}_{i,t})$, then $\mathbf{x}_{i,t+1} \gets \mathbf{u}_{i,t}$; otherwise, $\mathbf{x}_{i,t+1} \gets \mathbf{x}_{i,t}$.
+4. return $\arg \min_{i} f(\mathbf{x}_{i,T})$.
+
 ```
 
 ## Python Implementation
@@ -126,6 +134,32 @@ class DE:
             gen = gen + 1
 
         return np.min(f_x)
-       
+```
+
+The following is a problem for minimizing the sphere function:
+
+$$
+f(\mathbf{x}) = \sum_{i=1}^{n} x_i^2
+$$
+
+This function is a simple quadratic function that is often used as a test case for optimization algorithms. The global minimum is at $\mathbf{x} = \mathbf{0}$, where $f(\mathbf{x}) = 0$.
+
+```python
+class Sphere:
+    def __init__(self, n_dim=10):
+        self.n_dim = n_dim
+        self.ub = 100
+        self.lb = -100
+
+    def evaluate(self, x):
+        return np.sum(x**2)
+
 if __name__ == "__main__":
-    op
+    problem = Sphere()
+    de = DE(problem, n_dim=10, n_gen=100, n_pop=10, ub=100, lb=-100, F=0.8, CR=0.5)
+    best_solution = de.optimize()
+    print("Best solution found: ", best_solution)
+```
+
+
+
