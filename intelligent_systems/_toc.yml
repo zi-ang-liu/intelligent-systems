@@ -46,6 +46,7 @@ parts:
       - file: contents/optimization/metaheuristics/constraint_handling
       - file: contents/optimization/metaheuristics/differential_evolution
       - file: contents/optimization/metaheuristics/initialization
+      - file: contents/optimization/metaheuristics/differential_evolution
     
     - file: contents/optimization/surrogate_optimization/intro
       sections:
