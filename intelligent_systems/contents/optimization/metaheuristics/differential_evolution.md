@@ -79,7 +79,28 @@ import numpy as np
 
 class DE:
 
-    '''Differential Evolution for single objective optimization problem'''
+    '''
+    Differential Evolution for single objective optimization problem
+
+    Parameters
+    ----------
+    problem: object
+        The optimization problem to be solved.
+    n_dim: int
+        The number of dimensions of the problem.
+    n_gen: int
+        The number of generations to run the algorithm.
+    n_pop: int
+        The number of individuals in the population.
+    ub: float
+        The upper bound of the search space.
+    lb: float
+        The lower bound of the search space.
+    F: float
+        The scaling factor for mutation.
+    CR: float
+        The crossover probability.
+    '''
 
     def __init__(self, problem, n_dim=10, n_gen=100, n_pop=10, ub=-100, lb=100, F=0.8, CR=0.5):
         self.problem = problem
