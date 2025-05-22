@@ -72,6 +72,69 @@ def mutation(pop, F):
         Scaling factor
     """
     n_pop, n_dim = pop.shape
-    r1, r2, r3 = np.random.randint(0, n_pop, size=(3, n_pop))
-    v = pop[r1] + F * (pop[r2] - pop[r3])
+    random_idx = np.random.randint(0, n_pop, (n_pop, 3))
+    r1, r2, r3 = random_idx[:, 0], random_idx[:, 1], random_idx[:, 2]
+    v = pop[r1, :] + F * (pop[r2, :] - pop[r3, :])
     return v
+
+# Example usage
+F = 0.8  # scaling factor
+pop = initialize_population(n, m, x_min, x_max)
+mutation = mutation(pop, F)
+print(mutation)
+```
+
+The obtained mutated vector $\mathbf{v}_{i,t}$ may exceed the bounds of the search space. To ensure that the mutated vector remains within the bounds, we can apply a simple repairing operation:
+
+```python
+def repair_vector(v, x_min, x_max):
+    """
+    Repair the mutated vector to ensure it is within bounds
+    
+    Parameters
+    ----------
+    v : array-like
+        Mutated vector
+    x_min : array-like
+        Lower bounds of the decision variables
+    x_max : array-like
+        Upper bounds of the decision variables
+    """
+    return np.clip(v, x_min, x_max)
+
+# Example usage
+v = np.array([10, -10])  # mutated vector
+x_min = np.array([-5, -5])  # lower bounds
+x_max = np.array([5, 5])    # upper bounds
+repaired_v = repair_vector(v, x_min, x_max)
+print(repaired_v)
+```
+
+## Crossover
+
+The crossover operation combines the mutated vector $\mathbf{v}_{i,t}$ with the original solution $\mathbf{x}_{i,t}$ to create a trial vector $\mathbf{u}_{i,t}$. The binomial crossover is commonly used:
+
+$$
+\mathbf{u}_{i,t} = \begin{cases}
+\mathbf{v}_{i,t} & \text{if } j = j_{rand} \text{ or } r_j < CR \\
+\mathbf{x}_{i,t} & \text{otherwise}
+\end{cases}
+$$
+
+where $CR$ is the crossover probability, $j_{rand}$ is a randomly chosen index, and $r_j$ is a random number uniformly distributed in the range $[0, 1]$.
+
+```python
+def crossover(pop, v, CR):
+    """
+    Perform crossover operation
+    
+    Parameters
+    ----------
+    pop : array-like
+        Current population
+    v : array-like
+        Mutated vector
+    CR : float
+        Crossover probability
+    """
+    
